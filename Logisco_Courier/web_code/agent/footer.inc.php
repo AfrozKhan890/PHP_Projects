@@ -1,0 +1,146 @@
+<div class="bottom-page">
+                            <div class="body-text">Copyright © 2024 SurfsideMedia</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>   
+    <script src="js/sweetalert.min.js"></script>    
+    <script src="js/apexcharts/apexcharts.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        (function ($) {
+
+            var tfLineChart = (function () {
+
+                var chartBar = function () {
+
+                    var options = {
+                        series: [{
+                            name: 'Total',
+                            data: [0.00, 0.00, 0.00, 0.00, 0.00, 273.22, 208.12, 0.00, 0.00, 0.00, 0.00, 0.00]
+                        }, {
+                            name: 'Pending',
+                            data: [0.00, 0.00, 0.00, 0.00, 0.00, 273.22, 208.12, 0.00, 0.00, 0.00, 0.00, 0.00]
+                        },
+                        {
+                            name: 'Delivered',
+                            data: [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                        }, {
+                            name: 'Canceled',
+                            data: [0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00]
+                        }],
+                        chart: {
+                            type: 'bar',
+                            height: 325,
+                            toolbar: {
+                                show: false,
+                            },
+                        },
+                        plotOptions: {
+                            bar: {
+                                horizontal: false,
+                                columnWidth: '10px',
+                                endingShape: 'rounded'
+                            },
+                        },
+                        dataLabels: {
+                            enabled: false
+                        },
+                        legend: {
+                            show: false,
+                        },
+                        colors: ['#2377FC', '#FFA500', '#078407', '#FF0000'],
+                        stroke: {
+                            show: false,
+                        },
+                        xaxis: {
+                            labels: {
+                                style: {
+                                    colors: '#212529',
+                                },
+                            },
+                            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        },
+                        yaxis: {
+                            show: false,
+                        },
+                        fill: {
+                            opacity: 1
+                        },
+                        tooltip: {
+                            y: {
+                                formatter: function (val) {
+                                    return "$ " + val + ""
+                                }
+                            }
+                        }
+                    };
+
+                    chart = new ApexCharts(
+                        document.querySelector("#line-chart-8"),
+                        options
+                    );
+                    if ($("#line-chart-8").length > 0) {
+                        chart.render();
+                    }
+                };
+
+                /* Function ============ */
+                return {
+                    init: function () { },
+
+                    load: function () {
+                        chartBar();
+                    },
+                    resize: function () { },
+                };
+            })();
+
+            jQuery(document).ready(function () { });
+
+            jQuery(window).on("load", function () {
+                tfLineChart.load();
+            });
+
+            jQuery(window).on("resize", function () { });
+        })(jQuery);
+
+        // Get modal elements
+var modal = document.getElementById("customReplyModal");
+var closeModal = document.getElementById("customCloseModal");
+var replyForm = document.getElementById("customReplyForm");
+
+// Open modal when "Reply" is clicked
+document.querySelectorAll(".reply-link").forEach(function(link) {
+    link.addEventListener("click", function(event) {
+        event.preventDefault();
+        var userId = this.getAttribute("data-id");
+        document.getElementById("customUserId").value = userId;
+        modal.style.display = "flex";
+    });
+});
+
+// Close modal when 'x' is clicked
+closeModal.onclick = function() {
+    modal.style.display = "none";
+};
+
+// Close modal when clicked outside the modal content
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
+    </script>
+</body>
+
+</html>
